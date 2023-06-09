@@ -15,7 +15,7 @@ docker build --tag mafia-server . -f ./build/server.dockerfile
 
 ```
 # Run server
-docker run -p 8080:8080 mafia-server -openvoting
+docker run -p 8113:8113 mafia-server -openvoting
 
 # Run client
 docker run -it mafia-client -addr="server address"

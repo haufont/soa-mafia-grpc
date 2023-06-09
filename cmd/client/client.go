@@ -37,7 +37,7 @@ type Args struct {
 }
 
 func parseArgs() (args Args) {
-	flag.StringVar(&args.Addr, "addr", "0.0.0.0:8080", "address")
+	flag.StringVar(&args.Addr, "addr", "0.0.0.0:8113", "address")
 	flag.BoolVar(&args.Auto, "auto", false, "automatic selection of actions on each turn")
 	flag.DurationVar(&args.BotLag, "lag", time.Millisecond*100, "delay between actions in automatic mode")
 	flag.Parse()

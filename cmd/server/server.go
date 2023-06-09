@@ -47,7 +47,7 @@ type Args struct {
 }
 
 func parseArgs() (args Args) {
-	flag.StringVar(&args.Addr, "addr", "0.0.0.0:8080", "address")
+	flag.StringVar(&args.Addr, "addr", "0.0.0.0:8113", "address")
 	flag.DurationVar(&args.KeepaliveTimeout, "keepalive", time.Second, "keap-alive timeout")
 	flag.BoolVar(&args.OpenVoting, "openvoting", false, "Will the vote be open")
 	flag.UintVar(&args.PlayersInSession, "ssize", 4, "Number of players in one session (must be at least 4)")
