@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+import "internal/role/role.proto";
+
+package player;
+
+option go_package = "mafia-grpc/internal/player";
+
+message Player {
+    string name = 1;
+    bytes uuid = 2;
+    role.Role role = 3;
+    bool dead = 4;
+    bool revealed = 5;
+    bool checked = 6;
+}

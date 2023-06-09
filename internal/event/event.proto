@@ -1,0 +1,62 @@
+syntax = "proto3";
+
+import "internal/player/player.proto";
+
+package event;
+
+option go_package = "mafia-grpc/internal/event";
+
+message JoinEvent {
+    player.Player player = 1;
+}
+
+message LeftEvent {
+    player.Player player = 1;
+}
+
+message MessageEvent {
+    string message = 1;
+}
+
+message StartDayEvent {
+    player.Player killed_player = 1;
+}
+
+message StartNightEvent {
+    player.Player killed_player = 1;
+}
+
+message VoteEvent {
+    player.Player requester = 1;
+    player.Player vote = 2;
+}
+
+message RepeatVotingEvent {
+    int32 attempt = 1;
+}
+
+message RevealedEvent {
+    player.Player player = 1;
+}
+
+message GameEndEvent {
+    enum Team {
+        Red = 0;
+        Black = 1;
+    }
+
+    Team team = 1;
+}
+
+message Event {
+    oneof event {
+        JoinEvent           join_event = 1;
+        LeftEvent           left_event = 2;
+        StartDayEvent       start_day_event = 3;
+        StartNightEvent     start_night_event = 4;
+        VoteEvent           vote_event = 5;
+        RepeatVotingEvent   repeat_voting_event = 6;
+        RevealedEvent       revealed_event = 7;
+        GameEndEvent        game_end_event = 8;
+    }
+}

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+import "internal/player/player.proto";
+
+package state;
+
+option go_package = "mafia-grpc/internal/state";
+
+enum PartOfTheDay {
+    UNKNOWN = 0;
+
+    DAY = 1;
+    NIGHT = 2;
+}
+
+message State {
+    repeated player.Player players = 1;
+    PartOfTheDay partOfTheDay = 2;
+    map<string, string> voices = 3;
+}

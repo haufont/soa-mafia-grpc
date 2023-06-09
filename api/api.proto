@@ -1,0 +1,53 @@
+syntax = "proto3";
+
+import "internal/event/event.proto";
+import "internal/state/state.proto";
+
+package api;
+
+option go_package = "mafia-grpc/api/api";
+
+message ReqJoin {
+    string username = 1;
+}
+
+message ReqGetState {
+    bytes player_uuid = 1;
+}
+
+message RspGetState {
+    state.State state = 1;
+}
+
+message ReqKill {
+    bytes requester_uuid = 1;
+    string target_player_name = 2;
+}
+
+message RspKill {
+}
+
+message ReqCheck {
+    bytes requester_uuid = 1;
+    string target_player_name = 2;
+}
+
+message RspCheck {
+    bool is_mafia = 1;
+}
+
+message ReqPublish {
+    bytes requester_uuid = 1;
+    string target_player_name = 2;
+}
+
+message RspPublish {
+}
+
+service MafiaService {
+    rpc Join(ReqJoin) returns (stream event.Event);
+    rpc GetState(ReqGetState) returns (RspGetState);
+    rpc Kill(ReqKill) returns (RspKill);
+    rpc Check(ReqCheck) returns (RspCheck);
+    rpc Publish(ReqPublish) returns (RspPublish);
+}
