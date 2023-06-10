@@ -1,6 +1,8 @@
 # soa-grpc
 
 ## Сборка
+
+### С докером
 ```
 # Build client
 docker build --tag mafia-client . -f ./build/client.dockerfile
@@ -9,13 +11,23 @@ docker build --tag mafia-client . -f ./build/client.dockerfile
 docker build --tag mafia-server . -f ./build/server.dockerfile
 ```
 
+### Без докера
+
+```
+# Build client
+go build ./cmd/client
+
+# Build server
+go build ./cmd/server
+```
+
 ## Запуск
 
-### Запуск через докер
+### С докером
 
 ```
 # Run server
-docker run -p 8113:8113 mafia-server -openvoting
+docker run -p 8113:8113 mafia-server
 
 # Run client
 docker run -it mafia-client -addr="server address"
@@ -23,14 +35,22 @@ docker run -it mafia-client -addr="server address"
 
 Сервер в докере работает нормально, но с клиентом в докере не смог подключиться к серверу в докере/без докера
 
-### Запуск без докера
+### Через docker-compose
 
 ```
 # Run server
-go run ./cmd/server
+cd build
+docker-compose up
+```
+
+### Без докера
+
+```
+# Run server
+./server
 
 # Run client
-go run ./cmd/client
+./client
 ```
 
 ## Опции

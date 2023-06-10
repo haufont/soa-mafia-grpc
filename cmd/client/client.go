@@ -10,13 +10,11 @@ import (
 	"time"
 
 	"google.golang.org/grpc"
-	"google.golang.org/grpc/credentials/insecure"
 )
 
 func dialOptions(args Args) (opt []grpc.DialOption) {
-	//opt = append(opt, grpc.WithInsecure())
+	opt = append(opt, grpc.WithInsecure())
 	opt = append(opt, grpc.WithBlock())
-	opt = append(opt, grpc.WithTransportCredentials(insecure.NewCredentials()))
 	return
 }
 

@@ -1,0 +1,10 @@
+version: "3"
+services:
+  server:
+    image: azuremint/mafia-server
+    container_name: mafia-server
+    build:
+      context: ..
+      dockerfile: ./build/server.dockerfile
+    ports:
+      - 8113:8113
